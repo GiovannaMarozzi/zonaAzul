@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.util.mappers;
+package com.tech.challenge.zonaAzul.util.mappers.condutor;
 
 import com.tech.challenge.zonaAzul.condutor.dto.TipoPagamentoRecord;
 import com.tech.challenge.zonaAzul.util.enums.TipoPagamento;

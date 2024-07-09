@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.util.exception;
+package com.tech.challenge.zonaAzul.util.exception.condutor;
 
 public class NoSuchRecordException extends Exception{
 
