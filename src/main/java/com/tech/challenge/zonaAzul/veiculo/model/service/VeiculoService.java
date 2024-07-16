@@ -34,33 +34,46 @@ public class VeiculoService {
         Boolean veiculoExistenteCondutorPrincipal = repository.existsByPlacaAndCnhCondutorPrincipal(veiculoForm.getPlaca(), condutor.getCnh());
         Boolean veiculoExistenteCondutorSecundario = repository.existsByPlacaAndCnhCondutorSecundario(veiculoForm.getPlaca(), condutor.getCnh());
 
-        if (condutor.getCnh() !=null){
-            return salvarVeiculo(condutor, veiculoExistenteCondutorPrincipal, veiculoExistenteCondutorSecundario, veiculo, condutorPrincipal);
-        }else {
-            log.info("Veículo com a placa: "+veiculoForm.getPlaca()+" não pode ser cadastrado sem uma CNH");
+        if (condutor.getCnh() != null) {
+            return salvarVeiculo(condutor, veiculoExistenteCondutorPrincipal, veiculoExistenteCondutorSecundario, veiculoForm, veiculo, condutorPrincipal);
+        } else {
+            log.info("Veículo com a placa: " + veiculoForm.getPlaca() + " não pode ser cadastrado sem uma CNH");
             throw new VeiculoNoDriverExistsException("Veículo não pode ser cadastrado sem uma CNH");
         }
     }
 
-    private VeiculoRecord salvarVeiculo(Condutor condutor, Boolean veiculoExistenteCondutorPrincipal, Boolean veiculoExistenteCondutorSecundario, Veiculo veiculo, Boolean condutorPrincipal) throws VeiculoAlreadyExistsException {
+    private VeiculoRecord salvarVeiculo(Condutor condutor, Boolean veiculoExistenteCondutorPrincipal, Boolean veiculoExistenteCondutorSecundario, VeiculoForm veiculoForm, Veiculo veiculo, Boolean condutorPrincipal) throws VeiculoAlreadyExistsException {
 
-            List<Veiculo> veiculoList = new ArrayList<>();
-            veiculoList.add(veiculo);
+        List<Veiculo> veiculoList = new ArrayList<>();
+        veiculoList.add(veiculo);
 
-            condutor.setVeiculos(veiculoList);
+        condutor.setVeiculos(veiculoList);
 
-            if (condutorPrincipal && Boolean.FALSE.equals(veiculoExistenteCondutorPrincipal)){
+        Veiculo veiculoExistente = repository.findByPlaca(veiculoForm.getPlaca());
+
+        if (veiculoExistente != null) {
+            if (condutorPrincipal && veiculoExistenteCondutorPrincipal) {
+                veiculoExistente.setCnhCondutorPrincipal(condutor.getCnh());
+            } else if (!condutorPrincipal && !veiculoExistenteCondutorSecundario) {
+                veiculoExistente.setCnhCondutorSecundario(condutor.getCnh());
+            } else {
+                throw new VeiculoAlreadyExistsException("Veiculo já existe no CPF: " + condutor.getCpf());
+            }
+
+            condutorRepository.save(condutor);
+            repository.save(veiculoExistente);
+
+        } else {
+            if (condutorPrincipal) {
                 veiculo.setCnhCondutorPrincipal(condutor.getCnh());
-            }else if (!condutorPrincipal && Boolean.FALSE.equals(veiculoExistenteCondutorSecundario)){
+            } else if (!condutorPrincipal) {
                 veiculo.setCnhCondutorSecundario(condutor.getCnh());
-            }else {
-                throw new VeiculoAlreadyExistsException("Veiculo já existe no CPF: "+ condutor.getCpf());
             }
 
             condutorRepository.save(condutor);
             repository.save(veiculo);
-
-            return VeiculoMappers.paraVeiculoRecord(veiculo);
+        }
+        return VeiculoMappers.paraVeiculoRecord(veiculo);
     }
 
 }
