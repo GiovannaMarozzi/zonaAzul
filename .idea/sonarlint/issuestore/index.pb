@@ -47,3 +47,7 @@ Isrc/main/java/com/tech/challenge/zonaAzul/condutor/form/CondutorForm.java,7/f/
 Ssrc/main/java/com/tech/challenge/zonaAzul/veiculo/controller/VeiculoController.java,5/5/553bcbfa67640fdb0bcb6f9ebace8f2b3f4534ac
 w
 Gsrc/main/java/com/tech/challenge/zonaAzul/veiculo/form/VeiculoForm.java,b/4/b401048b38ccec9908b60dd04680fa480af2c2d7
+Š
+Zsrc/main/java/com/tech/challenge/util/exception/veiculo/VeiculoNoSurchExistsException.java,b/9/b9541bb722e6543786174c600f2740d9ee2277f6
+‹
+[src/main/java/com/tech/challenge/util/exception/veiculo/VeiculoNoDriverExistsException.java,d/b/dbedd68d87aca75ed1bc83121a14c67f781c90da

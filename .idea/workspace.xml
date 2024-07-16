@@ -5,27 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a65500-b697-4ef0-b14f-ab0f3198b5e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/controller/VeiculoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/1/7190b24411c4478b6314aabfba93ecb9e773e373" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/841842b589860e1084557d64be0c917dec2e613b" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/util/exception/veiculo/VeiculoNoSurchExistsException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/1/7190b24411c4478b6314aabfba93ecb9e773e373" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/4/841842b589860e1084557d64be0c917dec2e613b" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/dto/VeiculoRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/dto/VeiculoRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/repository/VeiculoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/repository/VeiculoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/controller/VeiculoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/controller/VeiculoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/service/VeiculoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/service/VeiculoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/controller/CondutorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/controller/CondutorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/CondutorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/CondutorRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/entity/Condutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/entity/Condutor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/service/CondutorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/service/CondutorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/util/enums/TipoPagamento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/util/exception/ConductorAlreadyExistsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/util/exception/NoSuchRecordException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/util/mappers/CondutorMappers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/util/mappers/EnderecoMappers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/util/mappers/TipoPagamentoMappers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/veiculo/controller/VeiculoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/veiculo/controller/VeiculoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/veiculo/model/service/VeiculoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/veiculo/model/service/VeiculoService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +55,11 @@
     "last_opened_file_path": "/home/giovanna/Documentos/Estudos/Projetos Pessoais/zonaazul"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tech.challenge.util.exception.veiculo" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.ZonaAzul">
     <configuration name="ZonaAzul" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.tech.challenge.zonaAzul.ZonaAzulApplication" />

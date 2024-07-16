@@ -1,5 +1,6 @@
 package com.tech.challenge.zonaAzul.veiculo.model.service;
 
+import com.tech.challenge.util.exception.veiculo.VeiculoNoSurchExistsException;
 import com.tech.challenge.zonaAzul.condutor.model.CondutorRepository;
 import com.tech.challenge.zonaAzul.condutor.model.entity.Condutor;
 import com.tech.challenge.util.exception.veiculo.VeiculoAlreadyExistsException;
@@ -77,12 +78,18 @@ public class VeiculoService {
         return VeiculoMappers.paraVeiculoRecord(veiculo);
     }
 
-    public List<VeiculoRecord> veiculos() {
-        List<Veiculo> veiculo = repository.findAll();
-        return VeiculoMappers.paraVeiculo(veiculo);
+    public List<VeiculoRecord> veiculos() throws VeiculoNoSurchExistsException {
+        List<Veiculo> veiculos = repository.findAll();
+
+        if (!veiculos.isEmpty()){
+            return VeiculoMappers.paraVeiculo(veiculos);
+        }else{
+            throw new VeiculoNoSurchExistsException("Nenhum veículo encontrado!");
+        }
+
     }
 
-    public VeiculoRecord editarVeiculo(VeiculoForm veiculoForm) {
+    public VeiculoRecord editarVeiculo(VeiculoForm veiculoForm) throws VeiculoNoSurchExistsException {
         Veiculo veiculo = repository.findByPlaca(veiculoForm.getPlaca());
 
         if (veiculo != null) {
@@ -93,21 +100,34 @@ public class VeiculoService {
             VeiculoRecord veiculoRecord = VeiculoMappers.paraVeiculoRecord(veiculo);
 
             repository.save(veiculo);
+            log.info("Informações do veículo com a placa: "+veiculo.getPlaca() + "editado!");
 
             return veiculoRecord;
+        }else{
+            throw new VeiculoNoSurchExistsException("Nenhum veículo encontrado!");
+        }
+    }
+
+    public VeiculoRecord veiculoPorPlaca(String placa) throws VeiculoNoSurchExistsException {
+        Veiculo veiculo = repository.findByPlaca(placa);
+
+        if (veiculo != null){
+            return VeiculoMappers.paraVeiculoRecord(veiculo);
+        }else{
+            throw new VeiculoNoSurchExistsException("Nenhum veículo encontrado!");
         }
 
-        return null;
     }
 
-    public VeiculoRecord veiculoPorPlaca(String placa) {
-        Veiculo veiculo = repository.findByPlaca(placa);
-        return VeiculoMappers.paraVeiculoRecord(veiculo);
-    }
+    public void deletarVeiculoPorPlaca(String placa) throws VeiculoNoSurchExistsException {
 
-    public void deletarVeiculoPorPlaca(String placa) {
-        repository.deleteByPlaca(placa);
-        log.info("Veículo deletado com sucesso!");
+        Boolean veiculoExistente = repository.existsByPlaca(placa);
 
+        if (veiculoExistente) {
+            repository.deleteByPlaca(placa);
+            log.info("Veículo deletado com sucesso!");
+        }else{
+            throw new VeiculoNoSurchExistsException("Nenhum veículo encontrado!");
+        }
     }
 }
