@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.util.exception.condutor;
+package com.tech.challenge.util.exception.condutor;
 
 public class ConductorAlreadyExistsException extends Exception {
 

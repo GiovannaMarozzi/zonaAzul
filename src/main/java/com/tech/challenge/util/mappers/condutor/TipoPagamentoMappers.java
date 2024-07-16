@@ -1,7 +1,7 @@
-package com.tech.challenge.zonaAzul.util.mappers.condutor;
+package com.tech.challenge.util.mappers.condutor;
 
+import com.tech.challenge.util.enums.TipoPagamento;
 import com.tech.challenge.zonaAzul.condutor.dto.TipoPagamentoRecord;
-import com.tech.challenge.zonaAzul.util.enums.TipoPagamento;
 
 public class TipoPagamentoMappers {
 

@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.util.exception.veiculo;
+package com.tech.challenge.util.exception.veiculo;
 
 public class VeiculoAlreadyExistsException extends Exception{
 

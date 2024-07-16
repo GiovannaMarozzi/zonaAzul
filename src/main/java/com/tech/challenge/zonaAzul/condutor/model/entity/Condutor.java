@@ -1,8 +1,7 @@
 package com.tech.challenge.zonaAzul.condutor.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.tech.challenge.zonaAzul.util.enums.TipoPagamento;
+import com.tech.challenge.util.enums.TipoPagamento;
 import com.tech.challenge.zonaAzul.veiculo.model.entity.Veiculo;
 import jakarta.persistence.*;
 import lombok.*;

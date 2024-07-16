@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.util.mappers.condutor;
+package com.tech.challenge.util.mappers.condutor;
 
 import com.tech.challenge.zonaAzul.condutor.dto.EnderecoRecord;
 import com.tech.challenge.zonaAzul.condutor.form.EnderecoForm;

@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.util.enums;
+package com.tech.challenge.util.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

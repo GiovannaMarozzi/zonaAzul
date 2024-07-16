@@ -2,9 +2,9 @@ package com.tech.challenge.zonaAzul.veiculo.model.service;
 
 import com.tech.challenge.zonaAzul.condutor.model.CondutorRepository;
 import com.tech.challenge.zonaAzul.condutor.model.entity.Condutor;
-import com.tech.challenge.zonaAzul.util.exception.veiculo.VeiculoAlreadyExistsException;
-import com.tech.challenge.zonaAzul.util.exception.veiculo.VeiculoNoDriverExistsException;
-import com.tech.challenge.zonaAzul.util.mappers.veiculos.VeiculoMappers;
+import com.tech.challenge.util.exception.veiculo.VeiculoAlreadyExistsException;
+import com.tech.challenge.util.exception.veiculo.VeiculoNoDriverExistsException;
+import com.tech.challenge.util.mappers.veiculos.VeiculoMappers;
 import com.tech.challenge.zonaAzul.veiculo.dto.VeiculoRecord;
 import com.tech.challenge.zonaAzul.veiculo.form.VeiculoForm;
 import com.tech.challenge.zonaAzul.veiculo.model.entity.Veiculo;

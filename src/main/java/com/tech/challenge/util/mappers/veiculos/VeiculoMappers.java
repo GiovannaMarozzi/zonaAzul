@@ -1,6 +1,5 @@
-package com.tech.challenge.zonaAzul.util.mappers.veiculos;
+package com.tech.challenge.util.mappers.veiculos;
 
-import com.tech.challenge.zonaAzul.util.mappers.condutor.CondutorMappers;
 import com.tech.challenge.zonaAzul.veiculo.dto.VeiculoRecord;
 import com.tech.challenge.zonaAzul.veiculo.model.entity.Veiculo;
 import com.tech.challenge.zonaAzul.veiculo.form.VeiculoForm;
