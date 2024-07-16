@@ -1,9 +1,9 @@
 package com.tech.challenge.zonaAzul.util.mappers.veiculos;
 
 import com.tech.challenge.zonaAzul.util.mappers.condutor.CondutorMappers;
-import com.tech.challenge.zonaAzul.veiculo.model.dto.VeiculoRecord;
-import com.tech.challenge.zonaAzul.veiculo.model.model.entity.Veiculo;
-import com.tech.challenge.zonaAzul.veiculo.model.form.VeiculoForm;
+import com.tech.challenge.zonaAzul.veiculo.dto.VeiculoRecord;
+import com.tech.challenge.zonaAzul.veiculo.model.entity.Veiculo;
+import com.tech.challenge.zonaAzul.veiculo.form.VeiculoForm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +22,13 @@ public class VeiculoMappers {
     }
 
 
-    public  static VeiculoRecord paraVeiculoRecord(Veiculo veiculo){
+    public static VeiculoRecord paraVeiculoRecord(Veiculo veiculo){
         VeiculoRecord veiculoRecord = new VeiculoRecord(veiculo.getPlaca(),
                 veiculo.getModeloVeiculo(),
                 veiculo.getMarca(),
                 veiculo.getCor(),
-                CondutorMappers.condutorMapperDTO(veiculo.getCondutorPrincipal()));
+                veiculo.getCnhCondutorPrincipal(),
+                veiculo.getCnhCondutorSecundario());
 
         return veiculoRecord;
     }

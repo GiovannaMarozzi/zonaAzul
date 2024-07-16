@@ -6,7 +6,8 @@ import com.tech.challenge.zonaAzul.condutor.model.service.CondutorService;
 import com.tech.challenge.zonaAzul.util.exception.condutor.ConductorAlreadyExistsException;
 import com.tech.challenge.zonaAzul.util.exception.condutor.NoSuchRecordException;
 import com.tech.challenge.zonaAzul.util.exception.veiculo.VeiculoAlreadyExistsException;
-import com.tech.challenge.zonaAzul.veiculo.model.form.VeiculoForm;
+import com.tech.challenge.zonaAzul.util.exception.veiculo.VeiculoNoDriverExistsException;
+import com.tech.challenge.zonaAzul.veiculo.form.VeiculoForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -100,13 +101,15 @@ public class CondutorController {
     }
 
     @PostMapping("/cpf={cpf}/adicionarVeiculo")
-    public ResponseEntity deletar(@PathVariable String cpf, @RequestBody VeiculoForm veiculoForm, @RequestParam Boolean condutorPrincipal) throws VeiculoAlreadyExistsException {
+    public ResponseEntity adicionarNovoVeiculo(@PathVariable String cpf, @RequestBody VeiculoForm veiculoForm, @RequestParam Boolean condutorPrincipal) throws VeiculoAlreadyExistsException, VeiculoNoDriverExistsException {
 
         try {
             service.adicionarNovoVeiculo(cpf, condutorPrincipal, veiculoForm);
             return ResponseEntity.status(HttpStatus.CREATED).body("Veículo cadastrado com sucesso para o CPF: "+cpf);
         }catch (VeiculoAlreadyExistsException alreadyExists) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(alreadyExists.getMessage());
+        }catch (VeiculoNoDriverExistsException noDriver){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(noDriver.getMessage());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

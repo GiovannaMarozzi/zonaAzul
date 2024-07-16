@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.veiculo.model.dto;
+package com.tech.challenge.zonaAzul.veiculo.dto;
 
 import com.tech.challenge.zonaAzul.condutor.dto.CondutorRecod;
 
@@ -6,5 +6,6 @@ public record VeiculoRecord(String placa,
                             String modelo,
                             String marca,
                             String cor,
-                            CondutorRecod condutorPrincipal) {
+                            String condutorPrincipal,
+                            String condutorSecundario) {
 }

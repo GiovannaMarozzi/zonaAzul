@@ -7,9 +7,10 @@ import com.tech.challenge.zonaAzul.condutor.model.entity.Condutor;
 import com.tech.challenge.zonaAzul.util.exception.condutor.ConductorAlreadyExistsException;
 import com.tech.challenge.zonaAzul.util.exception.condutor.NoSuchRecordException;
 import com.tech.challenge.zonaAzul.util.exception.veiculo.VeiculoAlreadyExistsException;
+import com.tech.challenge.zonaAzul.util.exception.veiculo.VeiculoNoDriverExistsException;
 import com.tech.challenge.zonaAzul.util.mappers.condutor.CondutorMappers;
-import com.tech.challenge.zonaAzul.veiculo.model.form.VeiculoForm;
-import com.tech.challenge.zonaAzul.veiculo.model.model.service.VeiculoService;
+import com.tech.challenge.zonaAzul.veiculo.form.VeiculoForm;
+import com.tech.challenge.zonaAzul.veiculo.model.service.VeiculoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +115,7 @@ public class CondutorService {
         return condutorExistente;
     }
 
-    public void adicionarNovoVeiculo(String cpf, Boolean condPrincipal, VeiculoForm veiculoForm) throws NoSuchRecordException, VeiculoAlreadyExistsException {
+    public void adicionarNovoVeiculo(String cpf, Boolean condPrincipal, VeiculoForm veiculoForm) throws NoSuchRecordException, VeiculoAlreadyExistsException, VeiculoNoDriverExistsException {
 
         Condutor condutor = verificaCondutor(cpf);
 

@@ -1,5 +1,7 @@
-package com.tech.challenge.zonaAzul.veiculo.model.model.entity;
+package com.tech.challenge.zonaAzul.veiculo.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tech.challenge.zonaAzul.condutor.model.entity.Condutor;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -8,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 
 @Data
@@ -22,7 +25,6 @@ public class Veiculo {
     private String modeloVeiculo;
     private String marca;
     private String cor;
-    @DBRef
-    private Condutor condutorPrincipal;
-    private Condutor condutorSecundario;
+    private String cnhCondutorPrincipal;
+    private String cnhCondutorSecundario;
 }

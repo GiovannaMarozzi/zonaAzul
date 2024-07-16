@@ -1,4 +1,4 @@
-package com.tech.challenge.zonaAzul.veiculo.model.form;
+package com.tech.challenge.zonaAzul.veiculo.form;
 
 
 import lombok.AllArgsConstructor;
