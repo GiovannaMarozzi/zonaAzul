@@ -75,8 +75,8 @@ public class CondutorService {
         condutorRecodList = CondutorMappers.condutorMapper(condutorList);
 
         if (condutorRecodList.isEmpty()){
-            log.info("Não foram encontrado registros");
-            throw new NoSuchRecordException("Não foram encontrado registros");
+            log.info("Não foram encontrado registros!");
+            throw new NoSuchRecordException("Não foram encontrado registros!");
         }
 
         return condutorRecodList;
