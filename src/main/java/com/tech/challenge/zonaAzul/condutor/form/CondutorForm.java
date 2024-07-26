@@ -1,12 +1,9 @@
 package com.tech.challenge.zonaAzul.condutor.form;
 
-import com.tech.challenge.zonaAzul.condutor.model.entity.Endereco;
-import com.tech.challenge.zonaAzul.util.enums.TipoPagamento;
+import com.tech.challenge.util.enums.TipoPagamento;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.processing.Pattern;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;

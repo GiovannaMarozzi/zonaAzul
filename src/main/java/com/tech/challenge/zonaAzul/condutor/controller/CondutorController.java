@@ -2,16 +2,17 @@ package com.tech.challenge.zonaAzul.condutor.controller;
 
 import com.tech.challenge.zonaAzul.condutor.dto.CondutorRecod;
 import com.tech.challenge.zonaAzul.condutor.form.CondutorForm;
-import com.tech.challenge.zonaAzul.condutor.model.entity.Condutor;
 import com.tech.challenge.zonaAzul.condutor.model.service.CondutorService;
-import com.tech.challenge.zonaAzul.util.exception.ConductorAlreadyExistsException;
-import com.tech.challenge.zonaAzul.util.exception.NoSuchRecordException;
+import com.tech.challenge.util.exception.condutor.ConductorAlreadyExistsException;
+import com.tech.challenge.util.exception.condutor.NoSuchRecordException;
+import com.tech.challenge.util.exception.veiculo.VeiculoAlreadyExistsException;
+import com.tech.challenge.util.exception.veiculo.VeiculoNoDriverExistsException;
+import com.tech.challenge.zonaAzul.veiculo.form.VeiculoForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -94,6 +95,21 @@ public class CondutorController {
             return ResponseEntity.ok("Cadastro deletado com sucesso!");
         }catch (NoSuchRecordException noSuch){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(noSuch.getMessage());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/cpf={cpf}/adicionarVeiculo")
+    public ResponseEntity adicionarNovoVeiculo(@PathVariable String cpf, @RequestBody VeiculoForm veiculoForm, @RequestParam Boolean condutorPrincipal) throws VeiculoAlreadyExistsException, VeiculoNoDriverExistsException {
+
+        try {
+            service.adicionarNovoVeiculo(cpf, condutorPrincipal, veiculoForm);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Veículo cadastrado com sucesso para o CPF: "+cpf);
+        }catch (VeiculoAlreadyExistsException alreadyExists) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(alreadyExists.getMessage());
+        }catch (VeiculoNoDriverExistsException noDriver){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(noDriver.getMessage());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
