@@ -11,4 +11,6 @@ public interface CondutorRepository extends MongoRepository<Condutor, String> {
     void deleteByCpf(String cpf);
 
     Boolean existsByVeiculos(Veiculo veiculo);
+
+    Condutor findByCnh(String ultimaCnh);
 }

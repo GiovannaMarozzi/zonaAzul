@@ -130,4 +130,14 @@ public class VeiculoService {
             throw new VeiculoNoSurchExistsException("Nenhum veículo encontrado!");
         }
     }
+
+    public Boolean verificarVeiculoCnh(String placa, String ultimaCnh) {
+        Boolean condutorPrincipal =  repository.existsByPlacaAndCnhCondutorPrincipal(placa, ultimaCnh);
+        Boolean condutorSecundario = repository.existsByPlacaAndCnhCondutorSecundario(placa, ultimaCnh);
+
+        if (condutorPrincipal || condutorSecundario){
+            return true;
+        }
+        return false;
+    }
 }

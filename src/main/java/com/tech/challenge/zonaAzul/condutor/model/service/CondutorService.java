@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -126,5 +127,24 @@ public class CondutorService {
             throw new NoSuchRecordException("Condutor com o CPF: "+cpf+" não cadastrado");
         }
 
+    }
+
+    public void debitarSaldo(String ultimaCnh, BigDecimal valorTicket) {
+        Condutor condutor = repository.findByCnh(ultimaCnh);
+
+        if (condutor != null) {
+            BigDecimal valorAtualSaldo = condutor.getSaldo();
+
+            if (valorAtualSaldo.compareTo(valorTicket) >= 0) {
+                BigDecimal valorFinalSaldo = valorAtualSaldo.subtract(valorTicket);
+                condutor.setSaldo(valorFinalSaldo);
+                repository.save(condutor);
+
+            } else {
+                log.info("Saldo insuficiente para debitar o valor do ticket.");
+            }
+        } else {
+            log.error("Condutor não encontrado com a CNH fornecida.");
+        }
     }
 }

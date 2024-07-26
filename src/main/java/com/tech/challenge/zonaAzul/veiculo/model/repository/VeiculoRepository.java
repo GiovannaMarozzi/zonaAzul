@@ -15,4 +15,6 @@ public interface VeiculoRepository extends MongoRepository<Veiculo, String> {
     Veiculo findByPlaca(String placa);
 
     void deleteByPlaca(String placa);
+
+    Boolean existsByCnhCondutorPrincipal(String ultimaCnh);
 }

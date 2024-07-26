@@ -5,35 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a65500-b697-4ef0-b14f-ab0f3198b5e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/util/exception/vaga/VagaAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/util/exception/vaga/VagaNoSurchExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/util/mappers/vaga/VagaMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/controller/vagaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/dto/VagaRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/form/VagaForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/entity/Vaga.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/repository/VagaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/service/VagaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/2647a9c60cedbf8445a341cd6ccd34c9ffe66544" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27de8af4a441b954e277b9e149f9343a5ccdda51" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d97da88f6fe1e36d99dde3a09ba4ca34fb2b4ab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/4740d2661cd314843c4d7bdccee3d8601f41f8e8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f98335bc516af77fc0aa597d2a29e12e941fe65" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/755c1d06be29acdd775598486d4b53a1e013f027" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b743e2da36805cdd046b8a24b1b92323d8056e4b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c93ce9e23660d4be482dc5fed64050c890f0eb2a" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/util/mappers/ticket/TicketMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/controller/TicketController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/dto/TicketRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/form/TicketForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/model/entity/Ticket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/model/repository/TicketRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/model/service/TicketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/6/2647a9c60cedbf8445a341cd6ccd34c9ffe66544" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/7/27de8af4a441b954e277b9e149f9343a5ccdda51" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/d/3d97da88f6fe1e36d99dde3a09ba4ca34fb2b4ab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/7/4740d2661cd314843c4d7bdccee3d8601f41f8e8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/f/5f98335bc516af77fc0aa597d2a29e12e941fe65" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/5/755c1d06be29acdd775598486d4b53a1e013f027" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/7/b743e2da36805cdd046b8a24b1b92323d8056e4b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/9/c93ce9e23660d4be482dc5fed64050c890f0eb2a" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/model/CondutorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/model/CondutorRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/model/service/CondutorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/model/service/CondutorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/repository/VeiculoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/repository/VeiculoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/service/VeiculoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/veiculo/model/service/VeiculoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/service/CondutorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tech/challenge/zonaAzul/condutor/model/service/CondutorService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +54,16 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.ZonaAzul.executor": "Debug",
+    "Application.ZonaAzul.executor": "Run",
     "Docker.src/docker-compose.yaml: Compose Deployment.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "development",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/giovanna/Documentos/Estudos/Projetos Pessoais/zonaazul"
+    "last_opened_file_path": "/home/giovanna/Documentos/Estudos/Pós - Arquitetura e Desenvolvimento Java/FASE 2 - PERSISTINDO DADOS E CONTAINERS/Tech Challenge/zonaAzul",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RecentsManager">
