@@ -1,6 +1,11 @@
 package com.tech.challenge.zonaAzul.ticket.controller;
 
-
+import com.tech.challenge.util.exception.condutor.InsufficientFundsException;
+import com.tech.challenge.util.exception.condutor.NoSuchRecordException;
+import com.tech.challenge.util.exception.ticket.DriverAlreadyRegularizedException;
+import com.tech.challenge.util.exception.ticket.TicketNotFoundException;
+import com.tech.challenge.util.exception.ticket.UnregularizedTicketException;
+import com.tech.challenge.util.exception.ticket.VehicleNotFoundException;
 import com.tech.challenge.zonaAzul.ticket.dto.TicketRecord;
 import com.tech.challenge.zonaAzul.ticket.form.TicketForm;
 import com.tech.challenge.zonaAzul.ticket.model.service.TicketService;
@@ -19,35 +24,86 @@ public class TicketController {
     TicketService service;
 
     @PostMapping("/novoTicket")
-    public ResponseEntity<TicketRecord> novoTicket(@RequestBody TicketForm form){
-        TicketRecord ticketRecord = service.novoTicket(form);
-        return ResponseEntity.status(HttpStatus.OK).body(ticketRecord);
+    public ResponseEntity<TicketRecord> novoTicket(@RequestBody TicketForm form) throws UnregularizedTicketException, VehicleNotFoundException, InsufficientFundsException, NoSuchRecordException {
+        ResponseEntity response = null;
+
+        try {
+            TicketRecord ticketRecord = service.novoTicket(form);
+            response = ResponseEntity.status(HttpStatus.OK).body(ticketRecord);
+        } catch (UnregularizedTicketException e) {
+            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (VehicleNotFoundException e) {
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (InsufficientFundsException e) {
+            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (NoSuchRecordException e) {
+            response =  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            response =  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro inesperado: " + e.getMessage());
+        }
+
+        return response;
     }
 
     @GetMapping("/todos")
-    public ResponseEntity<List<TicketRecord>> todosTickets(){
-        List<TicketRecord> ticketRecordList = service.todosTickets();
-        return ResponseEntity.status(HttpStatus.OK).body(ticketRecordList);
+    public ResponseEntity<List<TicketRecord>> todosTickets() {
+        ResponseEntity response = null;
+        try {
+            List<TicketRecord> ticketRecordList = service.todosTickets();
+            response = ResponseEntity.status(HttpStatus.OK).body(ticketRecordList);
+        } catch (Exception e) {
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+
+        return response;
     }
 
     @GetMapping("/todos/placa={placa}")
     public ResponseEntity<List<TicketRecord>> todosTicketsPorData(@PathVariable String placa){
-        List<TicketRecord> ticketRecordList = service.todosTicketsPorPlaca(placa);
-        return ResponseEntity.status(HttpStatus.OK).body(ticketRecordList);
+        ResponseEntity response = null;
+
+        try {
+            List<TicketRecord> ticketRecordList = service.todosTicketsPorPlaca(placa);
+            response =  ResponseEntity.status(HttpStatus.OK).body(ticketRecordList);
+        } catch (Exception e) {
+            response =  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+        return response;
     }
 
     @PostMapping("/regularizar={id}")
-    public ResponseEntity regularizarTicket(@PathVariable String id){
-        service.regularizarTicket(id);
-        return null;
+    public ResponseEntity<?> regularizarTicket(@PathVariable String id) {
+        ResponseEntity response = null;
+
+        try {
+            service.regularizarTicket(id);
+            response =  ResponseEntity.status(HttpStatus.OK).body("Ticket e condutor regularizado com sucesso!");
+        } catch (TicketNotFoundException e) {
+            response =  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (NoSuchRecordException e) {
+            response =  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (DriverAlreadyRegularizedException e) {
+            response =  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            response =  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An unexpected error occurred: " + e.getMessage());
+        }
+        return response;
     }
 
     @PostMapping("/multa={placa}")
-    public ResponseEntity multarVeiculo(@PathVariable String placa){
-        service.multarVeiculo(placa);
-        return null;
-    }
+    public ResponseEntity<?> multarVeiculo(@PathVariable String placa) {
+        ResponseEntity response = null;
 
-    //Criar as regras de negócio, para que possa:
-//    Criar sistema de pagamento para que possa ser debitado da conta do próprio condutor
+        try {
+            service.multarVeiculo(placa);
+            response = ResponseEntity.status(HttpStatus.OK).body("Multa aplicada com sucesso!");
+        } catch (TicketNotFoundException e) {
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Ocorreu um erro inesperado: " + e.getMessage());
+        }
+        return response;
+    }
 }

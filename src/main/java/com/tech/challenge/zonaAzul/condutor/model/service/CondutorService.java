@@ -1,5 +1,6 @@
 package com.tech.challenge.zonaAzul.condutor.model.service;
 
+import com.tech.challenge.util.exception.condutor.InsufficientFundsException;
 import com.tech.challenge.zonaAzul.condutor.dto.CondutorRecod;
 import com.tech.challenge.zonaAzul.condutor.form.CondutorForm;
 import com.tech.challenge.zonaAzul.condutor.model.CondutorRepository;
@@ -9,6 +10,7 @@ import com.tech.challenge.util.exception.condutor.NoSuchRecordException;
 import com.tech.challenge.util.exception.veiculo.VeiculoAlreadyExistsException;
 import com.tech.challenge.util.exception.veiculo.VeiculoNoDriverExistsException;
 import com.tech.challenge.util.mappers.condutor.CondutorMappers;
+import com.tech.challenge.zonaAzul.ticket.model.entity.Ticket;
 import com.tech.challenge.zonaAzul.veiculo.form.VeiculoForm;
 import com.tech.challenge.zonaAzul.veiculo.model.service.VeiculoService;
 import org.slf4j.Logger;
@@ -129,7 +131,7 @@ public class CondutorService {
 
     }
 
-    public void debitarSaldo(String ultimaCnh, BigDecimal valorTicket) {
+    public void debitarSaldo(String ultimaCnh, BigDecimal valorTicket) throws NoSuchRecordException, InsufficientFundsException {
         Condutor condutor = repository.findByCnh(ultimaCnh);
 
         if (condutor != null) {
@@ -142,9 +144,19 @@ public class CondutorService {
 
             } else {
                 log.info("Saldo insuficiente para debitar o valor do ticket.");
+                throw new InsufficientFundsException("Saldo insuficiente para debitar o valor do ticket.");
             }
         } else {
             log.error("Condutor não encontrado com a CNH fornecida.");
+            throw new NoSuchRecordException("Condutor com CNH: "+ultimaCnh+" não cadastrado");
         }
+    }
+
+    public void bloquearCondutor(Ticket ultimoTicket) {
+        Condutor condutor = repository.findByCnh(ultimoTicket.getUltimaCnh());
+        condutor.setClienteAtivo(false);
+        repository.save(condutor);
+
+        log.info("Multa para a placa: "+ultimoTicket.getPlaca()+". Condutor bloqueado até a regularização!");
     }
 }

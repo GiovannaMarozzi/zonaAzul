@@ -1,5 +1,11 @@
 package com.tech.challenge.zonaAzul.ticket.model.service;
 
+import com.tech.challenge.util.exception.condutor.InsufficientFundsException;
+import com.tech.challenge.util.exception.condutor.NoSuchRecordException;
+import com.tech.challenge.util.exception.ticket.DriverAlreadyRegularizedException;
+import com.tech.challenge.util.exception.ticket.TicketNotFoundException;
+import com.tech.challenge.util.exception.ticket.UnregularizedTicketException;
+import com.tech.challenge.util.exception.ticket.VehicleNotFoundException;
 import com.tech.challenge.util.mappers.ticket.TicketMapper;
 import com.tech.challenge.zonaAzul.condutor.model.CondutorRepository;
 import com.tech.challenge.zonaAzul.condutor.model.entity.Condutor;
@@ -40,7 +46,7 @@ public class TicketService {
 
     TicketMapper ticketMapper = new TicketMapper();
 
-    public TicketRecord novoTicket(TicketForm ticketForm) {
+    public TicketRecord novoTicket(TicketForm ticketForm) throws UnregularizedTicketException, VehicleNotFoundException, InsufficientFundsException, NoSuchRecordException {
         Ticket ticket = ticketMapper.paraTicket(ticketForm);
         Boolean verificarCnh = veiculoService.verificarVeiculoCnh(ticket.getPlaca(), ticket.getUltimaCnh());
         Condutor condutor = condutorRepository.findByCnh(ticket.getUltimaCnh());
@@ -57,12 +63,12 @@ public class TicketService {
                 return ticketRecord;
             }else{
                 log.error("Cliente irregular, favor regularizar o ticket");
+                throw new UnregularizedTicketException("Cliente irregular, favor regularizar o ticket");
             }
-
         }else{
-            log.error("Nenhum ticket irregular para a cnh");
+            log.error("nenhum veiculo encontrado para a cnh: "+ticketForm.getCnh());
+            throw new VehicleNotFoundException("Nenhum veiculo encontrado para esta cnh: "+ticketForm.getCnh());
         }
-        return null;
     }
 
     public List<TicketRecord> todosTickets() {
@@ -79,7 +85,7 @@ public class TicketService {
         return ticketRecordList;
     }
 
-    public void regularizarTicket(String id) {
+    public void regularizarTicket(String id) throws TicketNotFoundException, NoSuchRecordException, DriverAlreadyRegularizedException {
         Optional<Ticket> ticketOpt = repository.findById(id);
 
         if (ticketOpt.isPresent()) {
@@ -94,41 +100,40 @@ public class TicketService {
 
         } else {
             log.error("Ticket não encontrado.");
+            throw new TicketNotFoundException("Ticket não encontrado!");
         }
-
-
     }
 
-    private void regularizarCondutor(String ultimaCnh) {
+    private void regularizarCondutor(String ultimaCnh) throws NoSuchRecordException, DriverAlreadyRegularizedException {
         Condutor condutor = condutorRepository.findByCnh(ultimaCnh);
 
-        if (condutor != null && Boolean.FALSE.equals(condutor.getClienteAtivo())) {
-            condutor.setClienteAtivo(true);
-            condutorRepository.save(condutor);
+        if (condutor != null) {
+            if (Boolean.FALSE.equals(condutor.getClienteAtivo())){
+                condutor.setClienteAtivo(true);
+                condutorRepository.save(condutor);
 
-            log.info("Condutor regularizado: " + condutor);
+                log.info("Condutor regularizado: " + condutor);
+            }else {
+                log.error("Condutor já regularizado.");
+                throw new DriverAlreadyRegularizedException("Condutor já regularizado!");
+            }
+
         } else {
             log.error("Condutor não encontrado.");
+            throw new NoSuchRecordException("Condutor não encontrado!");
         }
     }
 
 
-    public void multarVeiculo(String placa) {
+    public void multarVeiculo(String placa) throws TicketNotFoundException {
         List<Ticket> ticketList = repository.findByPlaca(placa);
 
         if (!ticketList.isEmpty()) {
             Ticket ultimoTicket = ticketList.get(ticketList.size() - 1);
-            bloquearCondutor(ultimoTicket);
+            condutorService.bloquearCondutor(ultimoTicket);
         } else {
             log.error("Nenhum ticket encontrado para a placa fornecida.");
+            throw new TicketNotFoundException("Nenhum ticket encontrado para a placa fornecida.");
         }
-    }
-
-    private void bloquearCondutor(Ticket ultimoTicket) {
-        Condutor condutor = condutorRepository.findByCnh(ultimoTicket.getUltimaCnh());
-        condutor.setClienteAtivo(false);
-        condutorRepository.save(condutor);
-
-        log.info("Multa para a placa: "+ultimoTicket.getPlaca()+". Condutor bloqueado até a regularização!");
     }
 }

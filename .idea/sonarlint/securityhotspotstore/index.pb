@@ -75,3 +75,17 @@ Isrc/main/java/com/tech/challenge/zonaAzul/ticket/model/entity/Ticket.java,6/5/
 Wsrc/main/java/com/tech/challenge/zonaAzul/ticket/model/repository/TicketRepository.java,7/0/70ae7ecab8036eb7c0c9161f7faa5355ca8803de
 v
 Fsrc/main/java/com/tech/challenge/util/mappers/ticket/TicketMapper.java,9/8/98ffe6ccdaf1f8c6c72435d0421e21f465a3e21d
+ç
+]src/main/java/com/tech/challenge/util/exception/condutor/ConductorAlreadyExistsException.java,5/d/5d3e5c25b4e7a277c78a7d787de11210b810c94b
+à
+Xsrc/main/java/com/tech/challenge/util/exception/ticket/UnregularizedTicketException.java,2/e/2e70f7caa92aa6ffbef673849ec953249d632476
+Ñ
+Tsrc/main/java/com/tech/challenge/util/exception/ticket/VehicleNotFoundException.java,6/b/6ba8474f1a3d4e4069f153f71114465473496316
+É
+Ssrc/main/java/com/tech/challenge/util/exception/ticket/TicketNotFoundException.java,d/3/d3a167b6533bcc64e9071786b2cbeacafabad83f
+à
+Xsrc/main/java/com/tech/challenge/util/exception/condutor/InsufficientFundsException.java,7/3/7312c7aec67fb40534c015ae56afebb7ad55110d
+É
+Ssrc/main/java/com/tech/challenge/util/exception/condutor/NoSuchRecordException.java,a/d/ad5b833fafadc81a51fdf8a99ae551b839258a5b
+ç
+]src/main/java/com/tech/challenge/util/exception/ticket/DriverAlreadyRegularizedException.java,8/0/8066d7b064d1ea864e26192f9769623ada6ce1c5
