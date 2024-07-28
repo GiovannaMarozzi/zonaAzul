@@ -6,6 +6,7 @@ import com.tech.challenge.util.exception.ticket.DriverAlreadyRegularizedExceptio
 import com.tech.challenge.util.exception.ticket.TicketNotFoundException;
 import com.tech.challenge.util.exception.ticket.UnregularizedTicketException;
 import com.tech.challenge.util.exception.ticket.VehicleNotFoundException;
+import com.tech.challenge.util.exception.vaga.VagaNoSurchExistsException;
 import com.tech.challenge.util.mappers.ticket.TicketMapper;
 import com.tech.challenge.zonaAzul.condutor.model.CondutorRepository;
 import com.tech.challenge.zonaAzul.condutor.model.entity.Condutor;
@@ -14,6 +15,10 @@ import com.tech.challenge.zonaAzul.ticket.dto.TicketRecord;
 import com.tech.challenge.zonaAzul.ticket.form.TicketForm;
 import com.tech.challenge.zonaAzul.ticket.model.entity.Ticket;
 import com.tech.challenge.zonaAzul.ticket.model.repository.TicketRepository;
+import com.tech.challenge.zonaAzul.vaga.dto.VagaRecord;
+import com.tech.challenge.zonaAzul.vaga.model.entity.Vaga;
+import com.tech.challenge.zonaAzul.vaga.model.repository.VagaRepository;
+import com.tech.challenge.zonaAzul.vaga.model.service.VagaService;
 import com.tech.challenge.zonaAzul.veiculo.model.repository.VeiculoRepository;
 import com.tech.challenge.zonaAzul.veiculo.model.service.VeiculoService;
 import org.slf4j.Logger;
@@ -44,14 +49,18 @@ public class TicketService {
     @Autowired
     private CondutorService condutorService;
 
+    @Autowired
+    private VagaRepository vagaRepository;
+
     TicketMapper ticketMapper = new TicketMapper();
 
-    public TicketRecord novoTicket(TicketForm ticketForm) throws UnregularizedTicketException, VehicleNotFoundException, InsufficientFundsException, NoSuchRecordException {
+    public TicketRecord novoTicket(TicketForm ticketForm) throws UnregularizedTicketException, VehicleNotFoundException, InsufficientFundsException, NoSuchRecordException, VagaNoSurchExistsException {
         Ticket ticket = ticketMapper.paraTicket(ticketForm);
         Boolean verificarCnh = veiculoService.verificarVeiculoCnh(ticket.getPlaca(), ticket.getUltimaCnh());
         Condutor condutor = condutorRepository.findByCnh(ticket.getUltimaCnh());
+        Boolean vaga = vagaRepository.existsByLocal(ticketForm.getLocal());
 
-        if (verificarCnh){
+        if (verificarCnh && vaga){
             if (condutor.getClienteAtivo()){
                 BigDecimal valorFinalTicket = ticket.getValorTicket().multiply(BigDecimal.valueOf(ticket.getTempo()));
                 ticket.setValorTicket(valorFinalTicket);
@@ -59,15 +68,14 @@ public class TicketService {
                 condutorService.debitarSaldo(ticket.getUltimaCnh(), ticket.getValorTicket());
 
                 repository.save(ticket);
-                TicketRecord ticketRecord = ticketMapper.paraTicketRecord(ticket);
-                return ticketRecord;
+                return ticketMapper.paraTicketRecord(ticket);
             }else{
                 log.error("Cliente irregular, favor regularizar o ticket");
                 throw new UnregularizedTicketException("Cliente irregular, favor regularizar o ticket");
             }
         }else{
-            log.error("nenhum veiculo encontrado para a cnh: "+ticketForm.getCnh());
-            throw new VehicleNotFoundException("Nenhum veiculo encontrado para esta cnh: "+ticketForm.getCnh());
+            log.error("Nenhum veiculo ou local da vaga encontrada: "+ticketForm.getCnh());
+            throw new VehicleNotFoundException("nenhum veiculo ou local da vaga encontrada: "+ticketForm.getCnh());
         }
     }
 
