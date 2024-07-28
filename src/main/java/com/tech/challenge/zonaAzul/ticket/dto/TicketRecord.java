@@ -1,6 +1,8 @@
 package com.tech.challenge.zonaAzul.ticket.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tech.challenge.zonaAzul.vaga.dto.VagaRecord;
+
 import java.math.BigDecimal;
 import java.util.Date;
 

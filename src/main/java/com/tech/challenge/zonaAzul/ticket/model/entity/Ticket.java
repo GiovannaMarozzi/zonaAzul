@@ -1,6 +1,7 @@
 package com.tech.challenge.zonaAzul.ticket.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tech.challenge.zonaAzul.vaga.model.entity.Vaga;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;

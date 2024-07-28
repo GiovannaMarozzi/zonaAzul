@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a65500-b697-4ef0-b14f-ab0f3198b5e6" name="Changes" comment="" />
+    <list default="true" id="61a65500-b697-4ef0-b14f-ab0f3198b5e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/949679b8ea4bd1443f07c539d90de0566afd4603" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/4/949679b8ea4bd1443f07c539d90de0566afd4603" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/util/mappers/vaga/VagaMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/util/mappers/vaga/VagaMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/dto/CondutorRecod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/dto/CondutorRecod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/form/CondutorForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/condutor/form/CondutorForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/dto/TicketRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/dto/TicketRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/form/TicketForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/form/TicketForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/model/entity/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/model/entity/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/model/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/ticket/model/service/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/dto/VagaRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/dto/VagaRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/form/VagaForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/form/VagaForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/entity/Vaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/entity/Vaga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/service/VagaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/service/VagaService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +35,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -81,11 +101,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.ZonaAzul" />
-      <item itemvalue="Docker.src/docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.src/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -102,5 +122,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/tech/challenge/zonaAzul/vaga/model/service/VagaService.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
