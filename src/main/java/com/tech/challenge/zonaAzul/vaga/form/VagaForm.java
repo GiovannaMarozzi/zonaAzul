@@ -6,5 +6,4 @@ import lombok.Data;
 public class VagaForm {
 
     private String local;
-    private Integer quantidadeVaga;
 }

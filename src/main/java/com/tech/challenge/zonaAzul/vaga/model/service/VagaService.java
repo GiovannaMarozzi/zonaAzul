@@ -62,7 +62,6 @@ public class VagaService {
         if (vagaExistente.isPresent()){
             vagaExistente.map(vaga -> {
                 vaga.setLocal(form.getLocal());
-                vaga.setQuantidadeVaga(form.getQuantidadeVaga());
                 return vaga;
             });
 
@@ -90,7 +89,7 @@ public class VagaService {
         Vaga vaga = repository.findByLocal(local);
 
         if (vaga == null){
-            log.info("Não foram encontrado registros!");
+            log.info("Não foram encontrado vagas com estes registos registros!");
             throw new VagaNoSurchExistsException("Não foram encontrado registros!");
         }
 
