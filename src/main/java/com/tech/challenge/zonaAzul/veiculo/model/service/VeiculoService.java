@@ -54,7 +54,7 @@ public class VeiculoService {
         Veiculo veiculoExistente = repository.findByPlaca(veiculoForm.getPlaca());
 
         if (veiculoExistente != null) {
-            if (condutorPrincipal && veiculoExistenteCondutorPrincipal) {
+            if (condutorPrincipal && !veiculoExistenteCondutorPrincipal) {
                 veiculoExistente.setCnhCondutorPrincipal(condutor.getCnh());
             } else if (!condutorPrincipal && !veiculoExistenteCondutorSecundario) {
                 veiculoExistente.setCnhCondutorSecundario(condutor.getCnh());

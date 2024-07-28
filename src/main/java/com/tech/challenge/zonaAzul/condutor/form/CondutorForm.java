@@ -19,5 +19,4 @@ public class CondutorForm {
     private EnderecoForm endereco;
     private BigDecimal saldo;
     private TipoPagamento tipoPagamentoPrincipal;
-    private Date dataHoraCadastro = new Date();
 }

@@ -11,5 +11,6 @@ public class TicketForm {
     private Integer tempo;
     private String placa;
     private String cnh;
+    private String local;
 
 }

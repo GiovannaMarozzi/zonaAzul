@@ -13,14 +13,13 @@ public class VagaMapper {
     public static Vaga paraVaga(VagaForm form){
         Vaga vaga = new Vaga();
         vaga.setLocal(form.getLocal());
-        vaga.setQuantidadeVaga(form.getQuantidadeVaga());
 
         return vaga;
     }
 
     public static VagaRecord paraVagaRecord(Vaga form){
 
-        VagaRecord vagaRecord = new VagaRecord(form.getId(), form.getLocal(), form.getQuantidadeVaga());
+        VagaRecord vagaRecord = new VagaRecord(form.getId(), form.getLocal());
         return vagaRecord;
     }
 

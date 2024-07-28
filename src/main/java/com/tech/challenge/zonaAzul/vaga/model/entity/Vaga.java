@@ -17,5 +17,4 @@ public class Vaga {
     @Id
     private String id = new ObjectId().toString();
     private String local;
-    private Integer quantidadeVaga;
 }
